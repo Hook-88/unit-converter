@@ -26,6 +26,13 @@ function getVolume(num) {
   }
 }
 
-let volume = getVolume(20)
+function getMass(num) {
+  return {
+    pounds: num * 2.20462,
+    kilos: num / 2.20462
+  }
+}
 
-console.log(volume.gallon.toFixed(3))
+
+
+// console.log(mass.kilos.toFixed(3))
