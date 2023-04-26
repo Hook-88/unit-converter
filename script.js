@@ -15,11 +15,17 @@ convertBtn.addEventListener("click", function () {
   procesConversion()
 })
 
-userInputEl.addEventListener("keydown", function (event) {
-  //console.log(event.code)
-  if (event.code === 'Enter') {
-    procesConversion()
-  }
+// userInputEl.addEventListener("keydown", function (event) {
+//   //console.log(event.code)
+//   if (event.code === 'Enter') {
+//     procesConversion()
+//   }
+// })
+
+userInputEl.addEventListener("focus", function () {
+  const tip = document.createElement("p")
+  tip.textContent = `Click the convert button or hit Enter to start the conversion`
+  console.log(convertBtn.parentElement) 
 })
 
 function procesConversion() {
