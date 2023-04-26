@@ -12,6 +12,17 @@ const volumeCardResultsEl = document.getElementById("volume-card-results")
 const massCardResults = document.getElementById("mass-card-results")
 
 convertBtn.addEventListener("click", function () {
+  procesConversion()
+})
+
+userInputEl.addEventListener("keydown", function (event) {
+  //console.log(event.code)
+  if (event.code === 'Enter') {
+    procesConversion()
+  }
+})
+
+function procesConversion() {
   //check if input fiels has no value and set it to null else set it to input value
   const userInput = userInputEl.value === "" ? null : userInputEl.value
   if (userInput === null) {
@@ -22,7 +33,9 @@ convertBtn.addEventListener("click", function () {
   
   renderResults(mainNum)
   userInputEl.value = mainNum
-})
+}
+
+
 
 
 function getLength(num) {
