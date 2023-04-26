@@ -16,7 +16,6 @@ convertBtn.addEventListener("click", function () {
   renderResults(mainNum)
 })
 
-
 function getLength(num) {
   return {
     feet: num * 3.2808,
@@ -26,8 +25,8 @@ function getLength(num) {
 
 function getVolume(num) {
   return {
-    liter: num * 3.785,
-    gallon: num / 3.785
+    gallon: num / 3.785,
+    liter: num * 3.785   
   }
 }
 
@@ -38,27 +37,36 @@ function getMass(num) {
   }
 }
 
-function renderLengthResults(num) {
-  const length = getLength(num)
-  lengthCardResultsEl.innerHTML = `${num} meters = ${length.feet.toFixed(3)} feet | ${num} feet = ${length.meters.toFixed(3)} meters`
+// function renderLengthResults(num) {
+//   const length = getLength(num)
+//   lengthCardResultsEl.innerHTML = `${num} meters = ${length.feet.toFixed(3)} feet | ${num} feet = ${length.meters.toFixed(3)} meters`
+// }
+
+// function renderVolumeResults(num) {
+//   const volume = getVolume(num)
+//   volumeCardResultsEl.innerHTML = `${num} liters = ${volume.gallon.toFixed(3)} gallons | ${num} gallons = ${volume.liter.toFixed(3)} liters`
+// }
+
+// function renderMassResults(num) {
+//   const mass = getMass(num)
+//   massCardResults.innerHTML = `${num} kilos = ${mass.pounds.toFixed(3)} pounds | ${num} pounds = ${mass.kilos.toFixed(3)} kilos`
+// }
+
+function renderUnitResults(num, getUnitFunc, htmlEl) {
+  const unit = getUnitFunc(num)
+  const unit1Str = Object.keys(unit)[1]
+  const unit2Str = Object.keys(unit)[0]
+
+  htmlEl.innerHTML = `${num} ${unit1Str} = ${unit[unit1Str].toFixed(3)} ${unit2Str} | ${num} ${unit2Str} = ${unit[unit2Str].toFixed(3)} ${unit1Str}`
 }
 
-function renderVolumeResults(num) {
-  const volume = getVolume(num)
-  volumeCardResultsEl.innerHTML = `${num} liters = ${volume.gallon.toFixed(3)} gallons | ${num} gallons = ${volume.liter.toFixed(3)} liters`
-}
 
-function renderMassResults(num) {
-  const mass = getMass(num)
-  massCardResults.innerHTML = `${num} kilos = ${mass.pounds.toFixed(3)} pounds | ${num} pounds = ${mass.kilos.toFixed(3)} kilos`
-}
 
 function renderResults(num) {
-  renderLengthResults(num)
-  renderVolumeResults(num)
-  renderMassResults(num)
+  renderUnitResults(num, getLength, lengthCardResultsEl)
+  renderUnitResults(num, getVolume, volumeCardResultsEl)
+  renderUnitResults(num, getMass, massCardResults)
 }
 
 renderResults(userInputEl.value)
 
-// console.log(mass.kilos.toFixed(3))

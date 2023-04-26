@@ -58,9 +58,12 @@ body {
 }
 
 .header-container button:hover {
-  background: #6943FF;
-  color: #ffffff;
+  background: #e7e7e7;;
   cursor: pointer;
+}
+
+.header-container button:hover:active {
+  color: #ffffff;
 }
 
 .cards-container {
