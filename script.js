@@ -12,9 +12,18 @@ const volumeCardResultsEl = document.getElementById("volume-card-results")
 const massCardResults = document.getElementById("mass-card-results")
 
 convertBtn.addEventListener("click", function () {
-  let mainNum = Number(userInputEl.value) 
+  //check if input fiels has no value and set it to null else set it to input value
+  const userInput = userInputEl.value === "" ? null : userInputEl.value
+  if (userInput === null) {
+    userInputEl.value = 0
+  }
+  
+  const mainNum = Number(userInput)
+  
   renderResults(mainNum)
+  userInputEl.value = mainNum
 })
+
 
 function getLength(num) {
   return {
